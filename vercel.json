@@ -3,22 +3,14 @@
   "buildCommand": "npm --prefix client install && npm --prefix client run build",
   "builds": [
     {
-      "src": "server/index.js",
+      "src": "api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/server/index.js"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "/client/build/static/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/server/index.js"
+      "dest": "/api/index.js"
     }
   ]
 }
