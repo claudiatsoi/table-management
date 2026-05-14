@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: table-management
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DB_FILE
+        value: /var/data/database.json
+    disk:
+      name: table-management-data
+      mountPath: /var/data
+      sizeGB: 1
