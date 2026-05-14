@@ -253,13 +253,16 @@ app.delete('/api/projects/:id', async (req, res) => {
   }
 });
 
+// Serve React static files
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// Catch-all for React routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
+
+// Only listen locally, not on Vercel (serverless)
 if (!process.env.VERCEL) {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
-
   ensureStorageReady()
     .then(() => {
       app.listen(PORT, () => {
@@ -276,5 +279,10 @@ if (!process.env.VERCEL) {
       process.exit(1);
     });
 }
+
+// Initialize storage on startup (needed for Vercel cold starts)
+ensureStorageReady().catch(err => {
+  console.error('Failed to initialize storage:', err);
+});
 
 module.exports = app;
