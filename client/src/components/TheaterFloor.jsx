@@ -90,11 +90,6 @@ function SeatBox({ seatNumber, prefix, guest, rowId, onDropGuest, onRemoveGuest,
 }
 
 function TheaterRow({ row, guests, readOnly, onUpdate, onRemove, onUnassignGuest }) {
-  const { isOver, setNodeRef } = useDroppable({
-    id: row.id,
-    data: { rowId: row.id }
-  });
-
   const {
     attributes,
     listeners,
@@ -120,7 +115,7 @@ function TheaterRow({ row, guests, readOnly, onUpdate, onRemove, onUnassignGuest
       <div className="theater-drag-handle" {...attributes} {...listeners}>
         <span>::</span>
       </div>
-      <div className={`theater-row ${isOver ? 'drop-hover' : ''}`}>
+      <div className="theater-row">
         <div className="row-header">
           {readOnly ? (
             <span className="row-name">{row.name}</span>
