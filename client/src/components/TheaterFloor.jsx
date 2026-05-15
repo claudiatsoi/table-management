@@ -99,6 +99,11 @@ function TheaterRow({ row, guests, readOnly, onUpdate, onRemove, onUnassignGuest
     isDragging
   } = useSortable({ id: row.id });
 
+  const { isOver: rowIsOver, setNodeRef: rowDropRef } = useDroppable({
+    id: `row-${row.id}`,
+    data: { type: 'row', rowId: row.id }
+  });
+
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
@@ -115,7 +120,7 @@ function TheaterRow({ row, guests, readOnly, onUpdate, onRemove, onUnassignGuest
       <div className="theater-drag-handle" {...attributes} {...listeners}>
         <span>::</span>
       </div>
-      <div className="theater-row">
+      <div ref={rowDropRef} className={`theater-row ${rowIsOver ? 'drop-hover' : ''}`}>
         <div className="row-header">
           {readOnly ? (
             <span className="row-name">{row.name}</span>

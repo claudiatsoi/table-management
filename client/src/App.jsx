@@ -253,6 +253,22 @@ function AppContent() {
     saveProject(newGuests, newTables);
   };
 
+  const assignFirstAvailableSeatInRow = (guestId, rowId) => {
+    const row = tables.find(t => t.id === rowId);
+    if (!row) return;
+
+    const prefix = row.seatPrefix || 'A';
+    const seatCount = row.seats || 10;
+    for (let i = 1; i <= seatCount; i++) {
+      const seatId = `${prefix}${i}`;
+      const occupied = guests.some(g => g.tableId === rowId && g.seat === seatId && g.id !== guestId);
+      if (!occupied) {
+        assignSeat(guestId, rowId, seatId);
+        return;
+      }
+    }
+  };
+
   const exportAssignments = () => {
     const data = tables.map(t => ({
       table: t.name,
@@ -321,6 +337,12 @@ function AppContent() {
     if (dropData?.type === 'seat' && mode === 'theater') {
       const { rowId, seat } = dropData;
       assignSeat(guestId, rowId, seat);
+      return;
+    }
+
+    if (dropData?.type === 'row' && mode === 'theater') {
+      const { rowId } = dropData;
+      assignFirstAvailableSeatInRow(guestId, rowId);
       return;
     }
 
