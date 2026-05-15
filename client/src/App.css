@@ -1,30 +1,32 @@
-.app { min-height: 100vh; background: #f5f7fa; }
-.loading { display: flex; align-items: center; justify-content: center; height: 100vh; font-size: 18px; color: #666; }
+.app { min-height: 100vh; background: #F9F7F5; }
+.loading { display: flex; align-items: center; justify-content: center; height: 100vh; font-size: 18px; color: #6B7280; }
 
 .header {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 16px 24px; background: white; border-bottom: 1px solid #e0e0e0;
-  flex-wrap: wrap; gap: 12px;
+  padding: 20px 32px; background: white; border-bottom: 1px solid #E5E7EB;
+  flex-wrap: wrap; gap: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
-.header-left { display: flex; align-items: center; gap: 16px; }
-.header h1 { font-size: 24px; color: #333; margin: 0; }
-.project-name { color: #666; font-size: 14px; }
+.header-left { display: flex; align-items: center; gap: 20px; }
+.header h1 { font-size: 24px; font-weight: 600; color: #1F2937; margin: 0; letter-spacing: -0.5px; }
+.project-name { color: #6B7280; font-size: 14px; font-weight: 500; }
 .header-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
 .btn {
-  padding: 8px 16px; background: #4a90d9; color: white; border: none;
-  border-radius: 6px; cursor: pointer; font-size: 14px; transition: background 0.2s;
+  padding: 10px 20px; background: #059669; color: white; border: none;
+  border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500;
+  transition: all 0.2s ease; transform-origin: center;
 }
-.btn:hover { background: #3a7bc8; }
-.btn-secondary { background: #6c757d; }
-.btn-secondary:hover { background: #5a6268; }
-.btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn-undo { background: #ffc107; color: #333; }
-.btn-undo:hover { background: #e0a800; }
-.btn-redo { background: #17a2b8; }
-.btn-redo:hover { background: #138496; }
-.btn-reset { background: #dc3545; }
-.btn-reset:hover { background: #c82333; }
+.btn:hover { background: #047857; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06); transform: translateY(-2px); }
+.btn:active { transform: scale(0.98); }
+.btn-secondary { background: #6B7280; }
+.btn-secondary:hover { background: #4B5563; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.btn-undo { background: #FBBF24; color: #1F2937; }
+.btn-undo:hover { background: #F59E0B; color: #1F2937; }
+.btn-redo { background: #3B82F6; }
+.btn-redo:hover { background: #2563EB; }
+.btn-reset { background: #E07A5F; }
+.btn-reset:hover { background: #D96B52; }
 
 .share-link { display: flex; align-items: center; gap: 8px; font-size: 13px; }
 .share-link input {
@@ -38,30 +40,35 @@
 }
 
 .filter-panel {
-  display: flex; gap: 12px; padding: 12px 24px; background: white;
-  border-bottom: 1px solid #e0e0e0; flex-wrap: wrap; align-items: center;
+  display: flex; gap: 16px; padding: 16px 32px; background: white;
+  border-bottom: 1px solid #E5E7EB; flex-wrap: wrap; align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 .filter-panel input[type="text"] {
-  padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px;
-  width: 200px; font-size: 14px;
+  padding: 10px 14px; border: 1px solid #E5E7EB; border-radius: 8px;
+  width: 200px; font-size: 14px; background: white; color: #1F2937;
+  transition: all 0.2s;
 }
+.filter-panel input[type="text"]:focus { outline: none; border-color: #059669; box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1); }
 .filter-panel select {
-  padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px;
-  font-size: 14px; background: white;
+  padding: 10px 14px; border: 1px solid #E5E7EB; border-radius: 8px;
+  font-size: 14px; background: white; color: #1F2937;
+  transition: all 0.2s;
 }
+.filter-panel select:focus { outline: none; border-color: #059669; box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1); }
 
 .main {
-  display: flex; gap: 24px; padding: 24px; min-height: calc(100vh - 140px);
+  display: flex; gap: 28px; padding: 28px 32px; min-height: calc(100vh - 160px);
 }
 .guest-sidebar {
-  width: 280px; background: white; border-radius: 8px; padding: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08); flex-shrink: 0;
+  width: 300px; background: white; border-radius: 12px; padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); flex-shrink: 0;
 }
 .guest-sidebar-header {
   display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
-.guest-sidebar h2 { font-size: 16px; margin: 0; color: #333; }
+.guest-sidebar h2 { font-size: 16px; font-weight: 600; margin: 0; color: #1F2937; }
 .select-all-bar {
   margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #eee;
 }
@@ -386,7 +393,7 @@
 /* Mode Selection Page */
 .mode-selection {
   min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px; background: linear-gradient(135deg, #059669 0%, #047857 100%);
 }
 .mode-selection-header { text-align: center; margin-bottom: 40px; color: white; }
 .mode-selection-header h1 { font-size: 36px; margin-bottom: 8px; }
@@ -395,14 +402,14 @@
   display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;
 }
 .mode-card {
-  width: 300px; padding: 40px 30px; background: white; border-radius: 16px;
-  text-align: center; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  width: 300px; padding: 40px 32px; background: white; border-radius: 12px;
+  text-align: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); border: 2px solid transparent;
 }
-.mode-card:hover { transform: translateY(-8px); box-shadow: 0 15px 50px rgba(0,0,0,0.3); }
+.mode-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08); border-color: #059669; }
 .mode-card.loading { opacity: 0.6; cursor: wait; }
 .mode-icon { font-size: 60px; margin-bottom: 20px; }
-.mode-card h2 { font-size: 24px; color: #333; margin-bottom: 12px; }
-.mode-card p { color: #666; margin-bottom: 16px; }
+.mode-card h2 { font-size: 22px; color: #1F2937; margin-bottom: 12px; font-weight: 600; }
+.mode-card p { color: #6B7280; margin-bottom: 18px; font-size: 14px; }
 .mode-card ul { text-align: left; padding-left: 20px; color: #666; font-size: 14px; }
 .mode-card li { margin: 6px 0; }
 .new-project-form { width: 100%; max-width: 800px; }
